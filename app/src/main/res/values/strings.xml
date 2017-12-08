@@ -12,4 +12,5 @@
     <string name="error_field_required">该信息不能为空</string>
     <string name="permission_rationale">"需要访问通讯录获取信息"
     </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
