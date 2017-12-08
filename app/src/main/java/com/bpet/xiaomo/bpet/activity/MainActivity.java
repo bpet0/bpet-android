@@ -1,4 +1,4 @@
-package com.bpet.xiaomo.bpet;
+package com.bpet.xiaomo.bpet.activity;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bpet.xiaomo.bpet.R;
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationItem;
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView;
 import com.luseen.luseenbottomnavigation.BottomNavigation.OnBottomNavigationItemClickListener;
