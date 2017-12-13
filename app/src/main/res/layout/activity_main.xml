@@ -5,19 +5,31 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/content_layout"
+        android:orientation="vertical"
+        >
+
+    </LinearLayout>
+
     <com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-    <TextView
+    <!--<TextView
+
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize="16sp"
+        />
 
     <Button
         android:id="@+id/button"
@@ -26,5 +38,5 @@
         android:layout_below="@+id/textView"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Change tab" />
+        android:text="Change tab" />-->
 </RelativeLayout>

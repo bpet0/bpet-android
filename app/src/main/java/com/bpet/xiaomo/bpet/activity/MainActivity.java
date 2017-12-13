@@ -1,12 +1,12 @@
 package com.bpet.xiaomo.bpet.activity;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.bpet.xiaomo.bpet.R;
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationItem;
@@ -15,22 +15,26 @@ import com.luseen.luseenbottomnavigation.BottomNavigation.OnBottomNavigationItem
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigationView;
+    //private BottomNavigationView bottomNavigationView;
 
-    private TextView textView;
+    // fragment管理类
+    private FragmentManager fragmentManager;
 
-    private Button button;
-
+    // 三个fragment
+    private Fragment tabBabyFragment, tabFriendFragment,tabAttentionFragment, tabSettingFragment;
+    private LinearLayout tabBabyLayout, tabFriendLayout, tabAttentionLayout, tabSettingLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.textView);
-        button = (Button) findViewById(R.id.button);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
 
-        int[] image = {R.drawable.ic_mic_black_24dp, R.drawable.ic_favorite_black_24dp,
-                R.drawable.ic_book_black_24dp, R.drawable.github_circle};
+
+        fragmentManager = getSupportFragmentManager();
+        init();
+
+        int[] image = {R.drawable.ic_favorite_black_24dp,R.drawable.ic_group_black_24dp,
+                R.drawable.ic_star_half_black_24dp, R.drawable.ic_build_black_24dp};
         int[] color = {ContextCompat.getColor(this, R.color.firstColor), ContextCompat.getColor(this, R.color.secondColor),
                 ContextCompat.getColor(this, R.color.thirdColor), ContextCompat.getColor(this, R.color.fourthColor)};
 
@@ -41,17 +45,17 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.setTextActiveSize(getResources().getDimension(R.dimen.text_active));
             bottomNavigationView.setTextInactiveSize(getResources().getDimension(R.dimen.text_inactive));
             bottomNavigationView.setItemActiveColorWithoutColoredBackground(ContextCompat.getColor(this, R.color.firstColor));
-            bottomNavigationView.setFont(Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Noh_normal.ttf"));
+            //bottomNavigationView.setFont(Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Noh_normal.ttf"));
         }
 
         BottomNavigationItem bottomNavigationItem = new BottomNavigationItem
-                ("Record", color[0], image[0]);
+                ("萌宠", color[0], image[0]);
         BottomNavigationItem bottomNavigationItem1 = new BottomNavigationItem
-                ("Like", color[1], image[1]);
+                ("朋友", color[1], image[1]);
         BottomNavigationItem bottomNavigationItem2 = new BottomNavigationItem
-                ("Books", color[2], image[2]);
+                ("关注", color[2], image[2]);
         BottomNavigationItem bottomNavigationItem3 = new BottomNavigationItem
-                ("GitHub", color[3], image[3]);
+                ("设置", color[3], image[3]);
 
 
         bottomNavigationView.addTab(bottomNavigationItem);
@@ -62,29 +66,76 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnBottomNavigationItemClickListener(new OnBottomNavigationItemClickListener() {
             @Override
             public void onNavigationItemClick(int index) {
+                //MyLog.i("index="+index+"--text="+textView.getText());
                 switch (index) {
-                    case 0:
-                        textView.setText("Record");
+                    case 0://"萌宠"
+                        if(tabBabyFragment == null){
+                            tabBabyFragment = new TabBabyFragment();
+                        }
+                        replaceFragment(tabBabyFragment);
                         break;
-                    case 1:
-                        textView.setText("Like");
+                    case 1://"朋友"
+                        if(tabFriendFragment == null){
+                            tabFriendFragment = new TabFriendFragment();
+                        }
+                        replaceFragment(tabFriendFragment);
                         break;
-                    case 2:
-                        textView.setText("Books");
+                    case 2://"关注"
+                        if(tabAttentionFragment == null){
+                            tabAttentionFragment = new TabAttentionFragment();
+                        }
+                        replaceFragment(tabAttentionFragment);
                         break;
-                    case 3:
-                        textView.setText("GitHub");
+                    case 3://"设置"
+                        if(tabSettingFragment == null){
+                            tabSettingFragment = new TabSettingFragment();
+                        }
+                        replaceFragment(tabSettingFragment);
                         break;
                 }
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
+       /* button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomNavigationView.selectTab(2);
             }
-        });
+        });*/
+    }
+    /**
+     * 初始化控件
+     */
+    private void init(){
+        tabBabyLayout = (LinearLayout)findViewById(R.id.fragment_baby);
+        tabFriendLayout = (LinearLayout)findViewById(R.id.fragment_friend);
+        tabAttentionLayout = (LinearLayout)findViewById(R.id.fragment_attention);
+        tabSettingLayout = (LinearLayout)findViewById(R.id.fragment_setting);
+        setDefaultFragment();
+    }
+
+    /**
+     * 设置默认显示的fragment
+     */
+    private void setDefaultFragment() {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        tabBabyFragment = new TabBabyFragment();
+        transaction.replace(R.id.content_layout, tabBabyFragment);
+        transaction.commit();
+    }
+
+    /**
+     * 切换fragment
+     * @param newFragment
+     */
+    private void replaceFragment(Fragment newFragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        if (!newFragment.isAdded()) {
+            transaction.replace(R.id.content_layout, newFragment);
+            transaction.commit();
+        } else {
+            transaction.show(newFragment);
+        }
     }
 }
 
