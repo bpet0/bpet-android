@@ -15,7 +15,7 @@ import com.luseen.luseenbottomnavigation.BottomNavigation.OnBottomNavigationItem
 
 public class MainActivity extends AppCompatActivity {
 
-    //private BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
 
     // fragment管理类
     private FragmentManager fragmentManager;
@@ -23,15 +23,16 @@ public class MainActivity extends AppCompatActivity {
     // 三个fragment
     private Fragment tabBabyFragment, tabFriendFragment,tabAttentionFragment, tabSettingFragment;
     private LinearLayout tabBabyLayout, tabFriendLayout, tabAttentionLayout, tabSettingLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
 
 
         fragmentManager = getSupportFragmentManager();
-        init();
+
 
         int[] image = {R.drawable.ic_favorite_black_24dp,R.drawable.ic_group_black_24dp,
                 R.drawable.ic_star_half_black_24dp, R.drawable.ic_build_black_24dp};
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        init();
        /* button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
         tabBabyLayout = (LinearLayout)findViewById(R.id.fragment_baby);
         tabFriendLayout = (LinearLayout)findViewById(R.id.fragment_friend);
         tabAttentionLayout = (LinearLayout)findViewById(R.id.fragment_attention);
+       /* LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(0, 0, 0, bottomNavigationView.getHeight());*/
+        //tabAttentionLayout.setPadding(0, 0, 0, bottomNavigationView.getHeight());
         tabSettingLayout = (LinearLayout)findViewById(R.id.fragment_setting);
         setDefaultFragment();
     }

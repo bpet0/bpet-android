@@ -7,6 +7,8 @@ android {
         applicationId "com.bpet.xiaomo.bpet"
         minSdkVersion 19
         targetSdkVersion 25
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
