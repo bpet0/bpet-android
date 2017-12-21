@@ -31,6 +31,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bpet.xiaomo.bpet.R;
+import com.bpet.xiaomo.bpet.library.Titanic;
+import com.bpet.xiaomo.bpet.library.TitanicTextView;
+import com.roger.catloadinglibrary.CatLoadingView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+
+    //CatLoadingView mView;
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -64,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private TitanicTextView myTitanicTextView;
+    private Titanic titanic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +78,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        myTitanicTextView = (TitanicTextView) findViewById(R.id.titanic_tv);
         populateAutoComplete();
-
+        titanic = new Titanic();
+        titanic.start(myTitanicTextView);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -84,7 +93,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
         });
-
+        //mView = new CatLoadingView();
+        //mView.show(getSupportFragmentManager(), "");
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -147,6 +157,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
+        titanic.cancel();
         if (mAuthTask != null) {
             return;
         }
@@ -198,7 +209,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return true;
+        //return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
