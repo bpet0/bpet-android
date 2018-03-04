@@ -52,17 +52,17 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationItem bottomNavigationItem = new BottomNavigationItem
                 ("萌宠", color[0], image[0]);
         BottomNavigationItem bottomNavigationItem1 = new BottomNavigationItem
-                ("朋友", color[1], image[1]);
+                ("", color[1], image[1]);
         BottomNavigationItem bottomNavigationItem2 = new BottomNavigationItem
                 ("关注", color[2], image[2]);
-        BottomNavigationItem bottomNavigationItem3 = new BottomNavigationItem
-                ("设置", color[3], image[3]);
+        /*BottomNavigationItem bottomNavigationItem3 = new BottomNavigationItem
+                ("设置", color[3], image[3]);*/
 
 
         bottomNavigationView.addTab(bottomNavigationItem);
         bottomNavigationView.addTab(bottomNavigationItem1);
         bottomNavigationView.addTab(bottomNavigationItem2);
-        bottomNavigationView.addTab(bottomNavigationItem3);
+        //bottomNavigationView.addTab(bottomNavigationItem3);
 
         bottomNavigationView.setOnBottomNavigationItemClickListener(new OnBottomNavigationItemClickListener() {
             @Override
