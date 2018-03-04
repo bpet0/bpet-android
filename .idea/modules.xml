@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BPet.iml" filepath="$PROJECT_DIR$/BPet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeiBo.iml" filepath="$PROJECT_DIR$/WeiBo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multiwindow/multiwindow.iml" filepath="$PROJECT_DIR$/multiwindow/multiwindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sharesdk/sharesdk.iml" filepath="$PROJECT_DIR$/sharesdk/sharesdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swipebacklayout/swipebacklayout.iml" filepath="$PROJECT_DIR$/swipebacklayout/swipebacklayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weiSwift/weiSwift.iml" filepath="$PROJECT_DIR$/weiSwift/weiSwift.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weiboSDK/weiboSDK.iml" filepath="$PROJECT_DIR$/weiboSDK/weiboSDK.iml" />
     </modules>
   </component>
 </project>
