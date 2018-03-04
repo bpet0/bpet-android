@@ -38,7 +38,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
         android:onClick="openLoginWebView"
-        android:text="登陆"
+        android:text="登录"
         android:clickable="true"
         android:textColor="@color/orange"
         android:textSize="18sp" />

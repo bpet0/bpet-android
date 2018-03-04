@@ -50,7 +50,9 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
-        android:src="@drawable/navigationbar_icon_radar_auto" />
+
+        android:src="@drawable/tabbar_message_auto" />
+        <!--android:src="@drawable/navigationbar_icon_radar_auto" -->
 
     <ImageView
         android:layout_width="match_parent"

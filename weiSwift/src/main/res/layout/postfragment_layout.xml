@@ -11,9 +11,10 @@
         android:id="@+id/compose_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="94dp"
-        android:src="@drawable/compose_slogan" />
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:id="@+id/first_line"
